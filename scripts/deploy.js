@@ -1,19 +1,23 @@
-// npx hardhat run scripts/run.js
+// npx hardhat run scripts/deploy.js --network mumbai
 const main = async () => {
-    const [owner, randomPerson] = await hre.ethers.getSigners();
     const domainContractFactory = await hre.ethers.getContractFactory('Domains');
     const domainContract = await domainContractFactory.deploy("aincrad");
     await domainContract.deployed();
-
+  
     console.log("Contract deployed to:", domainContract.address);
-    
-    // We're passing in a second variable - value. This is the moneyyyyyyyyyy
-    let txn = await domainContract.register("kirito",  {value: hre.ethers.utils.parseEther('0.01')});
+  
+    // CHANGE THIS DOMAIN TO SOMETHING ELSE! I don't want to see OpenSea full of kiritos lol
+      let txn = await domainContract.register("kirito",  {value: hre.ethers.utils.parseEther('0.00045')});
+      await txn.wait();
+    console.log("Minted domain kirito.aincrad");
+  
+    txn = await domainContract.setRecord("kirito", "Am I a kirito or an aincrad??");
     await txn.wait();
-
-    const address = await domainContract.getAddress("Kirito");
+    console.log("Set record for kirito.aincrad");
+  
+    const address = await domainContract.getAddress("kirito");
     console.log("Owner of domain kirito:", address);
-
+  
     const balance = await hre.ethers.provider.getBalance(domainContract.address);
     console.log("Contract balance:", hre.ethers.utils.formatEther(balance));
   }
