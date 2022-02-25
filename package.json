@@ -1,0 +1,20 @@
+{
+  "name": "cool-domains-contract",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OscarKevinXR/cool-domains-contract.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OscarKevinXR/cool-domains-contract/issues"
+  },
+  "homepage": "https://github.com/OscarKevinXR/cool-domains-contract#readme"
+}
